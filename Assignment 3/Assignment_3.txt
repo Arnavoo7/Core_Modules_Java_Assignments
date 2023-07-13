@@ -1,0 +1,300 @@
+Assignment-3: https://pwskills.notion.site/Assignment-Questions-3-fa3c114f562d47698d21a5cbe1f9af77
+
+
+Q1. Write a simple Banking System program by using OOPs concept where you can get account Holder name balance
+
+
+import java.util.Scanner;
+
+class Bank {
+
+    private String accountHolderName;
+    private double bal;
+
+    public void setAccountHolderName(String name) {
+        this.accountHolderName = name;
+    }
+
+    public String getAccountHolderName() {
+        return accountHolderName;
+    }
+
+    public void setBalance(Double bal) {
+        this.bal= bal;
+    }
+
+    public double getBalance() {
+        return bal;
+    }
+
+
+    public static void main(String[] args) {
+
+        Bank b = new Bank();
+
+        //Setting default values for the user
+        b.setAccountHolderName("Avatar");
+        b.setBalance(100.50);
+
+        //Getting the name and bal
+        System.out.print("Account Holder Name is " + b.getAccountHolderName());
+        System.out.println(" and his balance is: " + b.getBalance());
+
+    }
+}
+
+
+________________________________________________________________________________________________________________________________________________
+
+
+Q2. Write a Program where you inherit method from parent class and show method Overridden Concept?
+
+
+//This showcases the concept of method overriding, where a subclass provides its own implementation of a method defined in its superclass.
+
+class Parent{
+
+    //The overridden method
+    public void bornPlace(){
+        System.out.println("Parents were born in Jharkhand.");
+    }
+}
+
+class Child extends Parent{
+
+    //Overriding the parent method
+    @Override
+    public void bornPlace(){
+        System.out.println("Child was born in Bengaluru");
+    }
+
+}
+
+public class Main2 {
+
+    public static void main(String[] args) {
+
+        Child c = new Child();
+        c.bornPlace();
+    }
+}
+
+
+________________________________________________________________________________________________________________________________________________
+
+
+Q3. Write a program to show run time polymorphism in java?
+
+
+
+// Base class
+class Shape {
+    void draw() {
+        System.out.println("Shape not confirmed yet");
+    }
+}
+
+// Implementation subclasses
+class Rectangle extends Shape {
+    // Run time polymorphism (Method overriding happening)
+    @Override
+    void draw() {
+        System.out.println("Shape is Rectangle");
+    }
+
+    void drawParent() {
+        super.draw(); // Calling the parent's draw() method
+    }
+}
+
+class Circle extends Shape {
+    void draw() {
+        System.out.println("Shape is Circle");
+    }
+}
+
+public class Main3 {
+    public static void main(String[] args) {
+        Shape s = new Rectangle();
+        // Rectangle
+        s.draw();
+
+        Rectangle r = (Rectangle) s;
+        r.drawParent(); // Accessing the parent's draw() method using super.draw()
+
+        s = new Circle();
+        // Circle
+        s.draw();
+    }
+}
+
+
+______________________________________________________________________________________________________________________________________________
+
+
+Q4. Write a program to show Compile time polymorphism in java?
+
+
+public class Main4 {
+
+    //Method overloading (Compile Time Polymorphism)
+    static void method(String a){
+        System.out.println("I have 2" + a);
+    }
+
+    static void method(int a, String b  ){
+        System.out.println("I have " + a + b);
+    }
+
+    public static void main(String[] args) {
+        method(5, " Apples.");
+        method(" Grapes.");
+    }
+
+}
+
+_____________________________________________________________________________________________________________________________________________
+
+
+Q5. Achieve loose coupling in java by using OOP concept?
+
+
+interface Music{
+    public void play();
+}
+
+class JazzMusic implements Music{
+    public void play(){
+        System.out.println("Jazz music playing.");
+    }
+}
+
+class RockMusic implements Music{
+    public void play()
+    {
+        System.out.println("Rock music playing.");
+    }
+}
+
+class Main5{
+    public static void main(String[] args){
+        //loose coupling happening
+        Music m = new RockMusic();
+        m.play();
+        m = new JazzMusic();
+        m.play();
+    }
+}
+
+
+_____________________________________________________________________________________________________________________________________________
+
+
+Q6. What is the benefit of encapsulation in java?
+
+- In Object Oriented Programming (OOP), data and associated behavior forms a single unit, which is referred to as a class. The term encapsulation refers to combining data and associated functions as a single unit. 
+
+- Encapsulation is the technique of making the field in a class private and providing access to those fields using getter and setter methods.
+
+- To hide the internal implementation details of the class.
+
+
+______________________________________________________________________________________________________________________________________________
+
+
+Q7.Is java a 100% Object oriented Programming language? If no why ?
+
+No, java is not 100% Object oriented programming language. Because it support primtive datatypes (like byte,short, int, long, float, double, char, boolean) which is not Object Type. Inspite of that java also have wrapper classes via which we can craete object of all primitive datatypes.
+
+_____________________________________________________________________________________________________________________________________________
+
+
+Q8. What are the advantages of abstraction in java?
+
+
+Advantages of Abstarction is following:
+_______________________________________
+
+1) It reduces the complexity of viewing things.
+2) Avoids code duplication and increases reusability.
+3) Helps to increase the security of an application or program as only essential details are provided to the user.
+4) It improves the maintainability of the application. 
+
+_____________________________________________________________________________________________________________________________________________
+
+Q9. What is an abstraction explained with an Example?
+
+Abstraction is one of the main Pillar of OOP. It is mechanism displays or show us only relevant state and behaviour of object and hides the unnecessary details about it.
+
+Ex:
+___
+
+when we are driving a car, we are only concerned about driving the car like start/stop the car, accelerate, break, etc. We are not concerned about how the actual start/stop mechanism or accelerate/brake process works internally.  We are just not interested in those details.
+
+
+//abstract class
+abstract class Car{  
+    abstract void accelerate();  
+}
+  
+//concrete class
+class Suzuki extends Car{  
+    void accelerate(){
+        System.out.println("Suzuki::accelerate");
+     
+    }
+}
+
+
+class Main{
+    public static void main(String args[]){  
+        Car obj = new Suzuki();  
+        obj.accelerate();       
+    }   
+}  
+
+______________________________________________________________________________________________________________________________________________
+
+
+Q10. What is the final class in Java?
+
+- A final is a keyword can be used with class, variable and method name.
+
+- A final keyword is also used to make a variable as constant once var value is declared constant the value can't be changed later.
+
+- If a method is made as final the subclass can inherit the method but cannot override.
+
+- If a class is made as final then we can't extend that class.
+
+______________________________________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
